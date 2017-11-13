@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>网格</title>
+	<style>
+		canvas{
+			height:800px;
+			width:800px;
+			background-color: #ccc;
+		}
+	</style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+
+<script>
+	
+	let canvas = document.getElementById("canvas");
+	let ctx  = canvas.getContext("2d");
+	canvas.width = 800;
+	canvas.height = 800;
+	
+	function drawGrid(ctx, color, stepx, stepy) {
+		ctx.beginPath();
+		ctx.strokeStyle = color;
+		ctx.lineWidth = 0.5;
+		for(let i = stepx + 0.5; i < canvas.width; i += stepx){
+		    ctx.moveTo(i, 0);
+		    ctx.lineTo(i, canvas.height);
+		    ctx.stroke();
+		}
+		for(let i = stepy + 0.5; i < canvas.height; i += stepy){
+			ctx.moveTo(0, i);
+			ctx.lineTo(canvas.width, i);
+			ctx.stroke();
+		}
+		
+	}
+	drawGrid(ctx, "red", 20, 20);
+</script>
+</body>
+</html>

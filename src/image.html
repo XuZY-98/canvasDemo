@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图案填充</title>
+	<style>
+		canvas{
+			width: 800px;
+			height:800px;
+		}
+	</style>
+</head>
+<body>
+	<div id="radio">
+		<input type="radio" id="repeat" checked >repeat
+		<input type="radio" id="repeatX">repeat-x
+		<input type="radio" id="repeatY">repeat-y
+		<input type="radio" id="noRepeat">no-repeat
+	</div>
+	<canvas id = "canvas"></canvas>
+	<script>
+		let canvas = document.getElementById("canvas");
+		let repeat = document.getElementById("repeat");
+		let repeatX = document.getElementById("repeatX");
+		let repeatY = document.getElementById("repeatY");
+		let noRepeat = document.getElementById("noRepeat");
+		canvas.width = 800;
+		canvas.height = 800;
+		let ctx = canvas.getContext("2d");
+		let img = new Image();
+		img.src = "../data/yuan.png";
+		function createPattern(img, repeat) {
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+			let pt = ctx.createPattern(img, repeat);
+			ctx.fillStyle = pt;
+			ctx.fillRect(0, 0, canvas.width, canvas.height);
+		}
+		
+		img.onload = function () {
+			createPattern(img, "repeat");
+		};
+		// 事件
+		repeat.onclick = function () {
+			createPattern(img, "repeat");
+		};
+		repeatX.onclick = function () {
+			createPattern(img, "repeat-x");
+		};
+		repeatY.onclick = function () {
+			createPattern(img, "repeat-y");
+		};
+		noRepeat.onclick = function () {
+			createPattern(img, "no-repeat");
+		};
+		
+	</script>
+</body>
+</html>

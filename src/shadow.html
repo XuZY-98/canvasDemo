@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>阴影</title>
+	<style>
+		canvas{
+			height:800px;
+			width:800px;
+			background-color: #ccc;
+		}
+	</style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+
+<script>
+
+	let canvas = document.getElementById("canvas");
+	let ctx  = canvas.getContext("2d");
+	canvas.width = 800;
+	canvas.height = 800;
+	ctx.strokeStyle = "salmon";
+	ctx.fillStyle = "#ff0000";
+	ctx.lineJoin = "round";
+	ctx.lineWidth = 30;
+	
+	// 阴影的4个属性
+	ctx.shadowColor = "black";
+	ctx.shadowOffsetX = 10;
+	ctx.shadowOffsetY = 10;
+	ctx.shadowBlur = 5;
+	
+	ctx.strokeRect(30, 30, 300, 300);
+	ctx.fillRect(400, 400, 300, 300);
+	ctx.font = "24px Helvetica";
+	ctx.fillText("统一 鲜橙多", 140, 140);
+	console.log(ctx);
+	
+
+</script>
+</body>
+</html>
